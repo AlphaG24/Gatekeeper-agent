@@ -1,81 +1,77 @@
 GateKeeper: Vision-Enabled Authentication Agent 🔐
-A Capstone Project for the Google AI Agents Intensive
+Capstone Project – Google AI Agents Intensive 2025
 
-GateKeeper is an autonomous, vision-driven authentication agent built to tackle one of the hardest problems in browser automation: reliable login workflows.
-Instead of depending on fragile HTML selectors, GateKeeper uses Gemini 2.0 Flash to see, reason, and act on real UI elements — making it resilient to DOM changes, dynamic layouts, and anti-bot patterns.
+GateKeeper is an autonomous, multimodal AI agent built to solve one of the most fundamental and fragile steps in browser automation: Authentication.
+Powered by Gemini 2.0 Flash, it visually interprets login pages, identifies UI components from pixels—not selectors—and executes precise, self-correcting interactions to reliably perform login flows.
 
 🎥 Project Demo
 
-(Insert YouTube Demo Link Here)
+[![GateKeeper Demo](https://img.youtube.com/vi/l1SjV7rIf40/0.jpg)](https://youtu.be/l1SjV7rIf40)
+
+(Click the thumbnail above to watch the demo video.)
 
 🏗️ System Architecture
 
-GateKeeper uses a feedback-driven, closed-loop “See → Reason → Act → Verify” pipeline:
+GateKeeper follows a closed-loop “See → Reason → Act → Verify” pipeline for robust navigation:
 
 1. Vision Layer — “The Eye”
 
-Playwright captures a full-page (1280×720) screenshot that represents the current browser state.
+Playwright captures a 1280×720 screenshot of the current browser state.
 
 2. Navigator Agent — “The Brain”
 
-Gemini 2.0 Flash performs multimodal reasoning to:
+Gemini 2.0 Flash analyzes the screenshot to:
 
-Locate username/password fields
+Detect username/password fields
 
-Identify actionable UI components (login buttons, toggles, banners)
+Identify login buttons
 
-Detect error messages like “Invalid Password”
+Spot error messages (e.g., “Invalid Password”)
 
-Suggest next steps to correct failures
+Generate the next interaction plan
 
 3. Browser Tool — “The Hand”
 
-A custom atomic-action toolkit executes precise actions:
+Executes atomic actions like click_and_type()
 
-click_and_type()
+Injects red/blue visual markers into the DOM to confirm precision
 
-click()
-
-DOM injection of visual markers (red/blue dots) for debugging
-Each action is grounded to the model’s predicted coordinates.
+Ensures pixel-aligned, repeatable interactions
 
 4. Verifier Layer
 
-After every action, the agent checks:
+Validates URL transitions and page content changes
 
-URL changes
+Detects stuck or failed states
 
-Page transitions
-
-Error banners
-If login fails or stalls, it triggers a self-healing refresh loop.
+Triggers a self-healing refresh loop when necessary
 
 🛠️ Tech Stack
 
-Model: Google Gemini 2.0 Flash (google-generativeai)
+Model: Google Gemini 2.0 Flash
 
-Automation: Playwright (Chromium)
+Automation: Playwright (Headless Chromium)
 
 Language: Python 3.11+
 
-Environment: Virtualenv / venv
+Deployment: Docker + Google Cloud Run
 
-Runtime: Local development machine
+Environment: Virtualenv (venv)
 
 🚀 Getting Started
 1. Clone the Repository
-git clone https://github.com/YOUR_USERNAME/gatekeeper-agent.git
-cd gatekeeper-agent
+git clone https://github.com/AlphaG24/Gatekeeper-agent.git
+cd Gatekeeper-agent
 
 2. Install Dependencies
 python -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 playwright install chromium
 
 3. Configure API Key
 
-Create a .env file:
+Create a .env file in the project root:
 
 GOOGLE_API_KEY=your_gemini_api_key_here
 
@@ -85,40 +81,31 @@ python test_login.py
 🧠 Key Features
 🔁 Self-Healing Execution
 
-Automatically retries or refreshes when interactions fail or login loops stall.
+Automatically detects failed login attempts and triggers retry or refresh logic.
 
 👁️ Vision-First Navigation
 
-No CSS selectors.
-No XPaths.
-No brittle DOM dependencies.
-UI interaction is driven solely by visual understanding.
+Fully pixel-based — no CSS selectors, XPaths, or brittle DOM checks.
 
-🎯 Precise Interaction Markers
+🎯 Visual Debug Markers
 
-Colored markers (red/blue dots) are injected into the DOM so you can see exactly where the model thinks the UI elements are.
+Injects colored markers into the webpage to show exactly where the AI is interacting.
 
-🧩 Modular Design
+☁️ Cloud-Ready Architecture
 
-Each component is atomic and fully replaceable — vision, navigation, verification, and execution.
+Includes:
 
-📌 Use Case
+Dockerfile
 
-GateKeeper solves real-world issues in automation:
+Cloud-run friendly wrappers
 
-Websites with dynamic HTML
+Zero-config deployment instructions
 
-Anti-bot protection using unpredictable DOMs
+🧩 Why This Matters
 
-Authentication flows that constantly redesign their UI
+Authentication is the biggest blocker for autonomous agents and RPA systems. GateKeeper demonstrates a robust, vision-driven method for handling login workflows that change frequently or deliberately break selector-based automation.
 
-Login screens behind iframes or shadow DOM
-
-🏁 Project Status
-
-This agent is a submission-ready implementation for the Google × Kaggle AI Agents Intensive 2025, showcasing autonomous reasoning, multimodal action planning, and robust operation across login workflows.
-
-✍️ Author
+✍️ Submitted By
 
 Raghav
-Google × Kaggle AI Agents Intensive — Capstone Project (2025)
+Google × Kaggle — AI Agents Intensive 2025
