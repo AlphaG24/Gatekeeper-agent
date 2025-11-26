@@ -1,0 +1,8 @@
+google-generativeai
+playwright
+python-dotenv
+pillow
+pydantic
+colorama
+echo "fastapi" >> requirements.txt
+echo "uvicorn" >> requirements.txt

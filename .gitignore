@@ -1,0 +1,14 @@
+cat <<EOF > .gitignore
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Project specific
+videos/
+screenshots/
+logs/
+.DS_Store
+EOF
